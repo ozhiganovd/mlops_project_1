@@ -1,0 +1,88 @@
+preprocessing:
+  period_day:
+    0: 'hours_night'
+    1: 'hours_night'
+    2: 'hours_night'
+    3: 'hours_night'
+    4: 'hours_morning'
+    5: 'hours_morning'
+    6: 'hours_morning'
+    7: 'hours_morning'
+    8: 'hours_morning'
+    9: 'hours_morning'
+    10: 'hours_morning'
+    11: 'hours_morning'
+    12: 'hours_day'
+    13: 'hours_day'
+    14: 'hours_day'
+    15: 'hours_day'
+    16: 'hours_day'
+    17: 'hours_evening'
+    18: 'hours_evening'
+    19: 'hours_evening'
+    20: 'hours_evening'
+    21: 'hours_evening'
+    22: 'hours_evening'
+    23: 'hours_evening'
+  map_col:
+    month:
+      1: 'January' 
+      2: 'February'
+      3: 'March'
+      4: 'April'
+      5: 'May'
+      6: 'June'
+      7: 'July'
+      8: 'August'
+      9: 'September'
+      10: 'October'
+      11: 'November'
+      12: 'December'
+  season:
+    'January': 'winter'
+    'February': 'winter'
+    'March': 'spring'
+    'April': 'spring'
+    'May': 'spring'
+    'June': 'summer'
+    'July': 'summer'
+    'August': 'summer'
+    'September': 'autumn'
+    'October': 'autumn'
+    'November': 'autumn'
+    'December': 'winter'
+  map_type_col:
+    holidays: int
+    preholidays: int
+    nowork: int
+  holidays_calendar: https://raw.githubusercontent.com/d10xa/holidays-calendar/master/json/calendar.json
+  drop_columns: ['date', 'work', 'count_order']
+  train_path: ../data/raw/count_order.csv
+  uniq_features_path: ../data/processed/uniq_features.json
+  path_proc: ../data/processed/df_proces.csv
+  target_column: count_order
+
+train:
+  test_size: 0.25
+  random_state: 10
+  n_trials: 10
+  n_folds: 5
+  random_state: 10
+  target_column: count_order
+  train_path_proc: ../data/processed/train.csv
+  test_path_proc: ../data/processed/test.csv
+  model_path: ../models/model.joblib
+  study_path: ../models/study.joblib
+  metrics_path: ../report/metrics.json
+  params_path: ../report/best_params.json
+
+evaluate:
+  predict_path: ../data/check/verification_sample.csv
+
+endpoints:
+  train: 'http://fastapi:8000/train'
+  prediction_input: 'http://fastapi:8000/predict_input'
+  prediction_from_file: 'http://fastapi:8000/predict'
+#  train: 'http://localhost:8000/train'
+#  prediction_input: 'http://localhost:8000/predict_input'
+#  prediction_from_file: 'http://localhost:8000/predict'
