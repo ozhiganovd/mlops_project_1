@@ -83,9 +83,9 @@ evaluate:
   predict_path: ../data/check/verification_sample.csv
 
 endpoints:
-  train: 'http://fastapi:8000/train'
-  prediction_input: 'http://fastapi:8000/predict_input'
-  prediction_from_file: 'http://fastapi:8000/predict'
-#  train: 'http://localhost:8000/train'
-#  prediction_input: 'http://localhost:8000/predict_input'
-#  prediction_from_file: 'http://localhost:8000/predict'
+#  train: 'http://fastapi:8000/train'
+#  prediction_input: 'http://fastapi:8000/predict_input'
+#  prediction_from_file: 'http://fastapi:8000/predict'
+  train: 'http://localhost:8000/train'
+  prediction_input: 'http://localhost:8000/predict_input'
+  prediction_from_file: 'http://localhost:8000/predict'
